@@ -29,4 +29,4 @@ class AKFO(Plugin):
         pass
 
     def help(self, **kwargs) -> str:
-        return "转发带有关键词的消息到指定群聊或私聊'。"
+        return "转发带有关键词的消息到指定群聊或私聊"
