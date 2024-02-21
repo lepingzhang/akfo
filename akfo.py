@@ -11,13 +11,11 @@ class AKFO(Plugin):
         self.forward_to_ids = self.config.get("forward_to_ids", [])
         
     def did_receive_message(self, event: Event):
-        # 检查消息是否包含任何关键词
         if any(keyword in event.message.content for keyword in self.keywords):
             msg_content = event.message.content
-            # 对每个配置的id进行消息转发
             for forward_to_id in self.forward_to_ids:
                 send_txt(msg_content, forward_to_id)
-            event.bypass()  # 防止消息被其他插件处理
+            event.bypass()
 
     def will_generate_reply(self, event: Event):
         pass
