@@ -1,5 +1,7 @@
 # wechat-gptbot 关键词转发插件
 
+### `AKFO`即`All Keywords Forward Other`
+
 本项目作为 `wechat-gptbot` 插件，可以将接收消息中包含关键词的消息转发给指定的群聊或者私聊。
 一个使用场景：结合iOS快捷指令，将特定短信调用微信发送消息给机器人，机器人再进行转发。
 
