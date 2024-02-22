@@ -22,8 +22,11 @@
 "plugins": [
   {
     "name": "akfo",
-    "keywords": ["关键词"],
-    "forward_to_ids": ["wxid_1234567890", "1234567890@chatroom"]
+    "keywords": [
+      "关键词",
+      "验证码.*?(\\d{4,8})"
+    ],
+    "forward_to_ids": ["49501082839@chatroom"]
   }
 ]
 ```
