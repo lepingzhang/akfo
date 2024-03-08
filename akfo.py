@@ -3,20 +3,22 @@ from utils.api import send_txt
 import re
 
 @register
-class AKFO(Plugin):
-    name = "akfo"
+class KeywordForward(Plugin):
+    name = "keyword_forward"
     
     def __init__(self, config):
         super().__init__(config)
-        self.patterns = [re.compile(keyword) for keyword in self.config.get("keywords", [])]
-        self.forward_to_ids = self.config.get("forward_to_ids", [])
+        self.forward_config = [{
+            'id': fc['id'],
+            'patterns': [re.compile(keyword) for keyword in fc.get("keywords", [])]
+        } for fc in self.config.get("forward_config", [])]
         
     def did_receive_message(self, event: Event):
         msg_content = event.message.content
-        if any(pattern.search(msg_content) for pattern in self.patterns):
-            for forward_to_id in self.forward_to_ids:
-                send_txt(msg_content, forward_to_id)
-            event.bypass()
+        for fc in self.forward_config:
+            if any(pattern.search(msg_content) for pattern in fc['patterns']):
+                send_txt(msg_content, fc['id'])
+                event.bypass()
 
     def will_generate_reply(self, event: Event):
         pass
