@@ -1,3 +1,3 @@
-from .akfo import AKFO
+from .keyword_forward import KeywordForward
 
-__all__ = ["AKFO"]
+__all__ = ["KeywordForward"]
